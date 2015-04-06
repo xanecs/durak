@@ -1,10 +1,14 @@
 class Hand
-  constructor: (@cards, @size = 6, pack) ->
+  constructor: (@name, @cards, @size = 6, pack) ->
     @fill(pack) if pack
 
   eat: (cards) ->
     @cards.push.apply(@cards, cards)
     @cards
+
+   remove: (card) ->
+   	index = @cards.indexOf(card)
+   	@cards.splice(index, 1) if index > -1
 
   fill: (pack) ->
     if @cards.length < @size
